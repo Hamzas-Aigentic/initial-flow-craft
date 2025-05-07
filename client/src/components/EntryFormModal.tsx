@@ -13,7 +13,7 @@ import { AIGenticBrosLogo } from "./ui/logo";
 import { sendToWebhook } from "@/lib/webhook";
 
 // The webhook URL for sending user registrations to n8n
-const WEBHOOK_URL = "http://localhost:5678/webhook/e77faf1e-0621-4233-9fe8-ab1057ee257f";
+const WEBHOOK_URL = "http://localhost:5678/webhook-test/e77faf1e-0621-4233-9fe8-ab1057ee257f";
 
 type FormData = {
   fullName: string;
