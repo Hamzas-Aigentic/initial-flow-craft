@@ -10,6 +10,10 @@ import { useAuth } from "@/contexts/AuthContext";
 import { apiRequest } from "@/lib/queryClient";
 import { useMutation } from "@tanstack/react-query";
 import { AIGenticBrosLogo } from "./ui/logo";
+import { sendToWebhook } from "@/lib/webhook";
+
+// The webhook URL for sending user registrations to n8n
+const WEBHOOK_URL = "http://localhost:5678/webhook/e77faf1e-0621-4233-9fe8-ab1057ee257f";
 
 type FormData = {
   fullName: string;
@@ -31,8 +35,27 @@ export function EntryFormModal() {
 
   const registerMutation = useMutation({
     mutationFn: async (data: FormData) => {
+      // First register the user in our system
       const response = await apiRequest("POST", "/api/register", data);
-      return response.json();
+      const result = await response.json();
+      
+      // Also send the data to the webhook for email processing
+      if (result.success) {
+        // Send user data to the webhook
+        const webhookSent = await sendToWebhook(WEBHOOK_URL, {
+          fullName: data.fullName,
+          email: data.email,
+          // Include the course URL that will be sent in the email
+          courseUrl: window.location.origin + "/",  // The main course page
+          timestamp: new Date().toISOString()
+        });
+        
+        if (!webhookSent) {
+          console.warn("Webhook call failed, but user registration was successful");
+        }
+      }
+      
+      return result;
     },
     onSuccess: (data) => {
       if (data.success) {
@@ -41,7 +64,7 @@ export function EntryFormModal() {
         
         toast({
           title: "Success!",
-          description: "You now have access to the course materials.",
+          description: "You now have access to the course materials. Check your email for direct access link.",
         });
       } else {
         toast({
