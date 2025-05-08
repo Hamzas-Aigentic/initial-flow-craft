@@ -46,7 +46,7 @@ export function EntryFormModal() {
           fullName: data.fullName,
           email: data.email,
           // Include the course URL that will be sent in the email
-          courseUrl: window.location.origin + "/",  // The main course page
+          courseUrl: window.location.origin + "/course",  // The dedicated course page
           timestamp: new Date().toISOString()
         });
         

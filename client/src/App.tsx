@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import HomePage from "@/pages/HomePage";
+import CoursePage from "@/pages/CoursePage";
 import { useAuth } from "@/contexts/AuthContext";
 import { useEffect, useState } from "react";
 import { EntryFormModal } from "@/components/EntryFormModal";
@@ -11,6 +12,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
+      <Route path="/course" component={CoursePage} />
       <Route component={NotFound} />
     </Switch>
   );

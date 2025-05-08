@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { AIGenticBrosLogo } from "./ui/logo";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
+import { useAuth } from "@/contexts/AuthContext";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   // Handle scroll to add background to navbar when scrolling
   useEffect(() => {
@@ -68,17 +71,33 @@ export function Navbar() {
           </button>
         </div>
         
-        <div className="md:hidden">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="text-white hover:bg-white/10" 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-          </Button>
+        <div className="flex items-center space-x-4">
+          {isAuthenticated && (
+            <Link href="/course">
+              <Button 
+                variant="secondary" 
+                className="hidden md:flex items-center gap-1 text-primary-dark"
+              >
+                <span>Course Page</span>
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </Button>
+            </Link>
+          )}
+          
+          <div className="md:hidden">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-white hover:bg-white/10" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            </Button>
+          </div>
         </div>
       </div>
       
@@ -110,6 +129,20 @@ export function Navbar() {
             >
               Resources
             </button>
+            
+            {isAuthenticated && (
+              <Link href="/course" className="block">
+                <Button 
+                  variant="secondary" 
+                  className="w-full flex items-center justify-center gap-1 text-primary-dark mt-2"
+                >
+                  <span>Course Page</span>
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       )}
