@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
-import { useAuth } from "@/contexts/AuthContext";
+import { useLocation } from "wouter";
 import { apiRequest } from "@/lib/queryClient";
 import { useMutation } from "@tanstack/react-query";
 import { AIGenticBrosLogo } from "./ui/logo";
@@ -22,7 +22,7 @@ type FormData = {
 
 export function EntryFormModal() {
   const { toast } = useToast();
-  const { login } = useAuth();
+  const [, setLocation] = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<FormData>({
@@ -59,13 +59,14 @@ export function EntryFormModal() {
     },
     onSuccess: (data) => {
       if (data.success) {
-        // Store the user data in the auth context
-        login(data.user);
-        
+        // Show success message and redirect to the course page
         toast({
           title: "Success!",
           description: "You now have access to the course materials. Check your email for direct access link.",
         });
+        
+        // Redirect to the course page
+        setLocation("/course");
       } else {
         toast({
           title: "Registration failed",

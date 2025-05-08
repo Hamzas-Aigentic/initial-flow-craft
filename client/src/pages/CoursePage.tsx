@@ -1,7 +1,3 @@
-import { useEffect } from "react";
-import { useAuth } from "@/contexts/AuthContext";
-import { useToast } from "@/hooks/use-toast";
-import { useLocation } from "wouter";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ModuleSection } from "@/components/ModuleSection";
@@ -9,26 +5,6 @@ import { ResourcesSection } from "@/components/ResourcesSection";
 import { module1Data, module2Data, module3Data } from "@/lib/courseData";
 
 export default function CoursePage() {
-  const { isAuthenticated } = useAuth();
-  const { toast } = useToast();
-  const [, setLocation] = useLocation();
-
-  // Redirect to homepage if user is not authenticated
-  useEffect(() => {
-    if (!isAuthenticated) {
-      toast({
-        title: "Access Denied",
-        description: "Please register to access the course content.",
-        variant: "destructive",
-      });
-      setLocation("/");
-    }
-  }, [isAuthenticated, setLocation, toast]);
-
-  // If not authenticated, don't render the content
-  if (!isAuthenticated) {
-    return null;
-  }
 
   return (
     <div className="min-h-screen flex flex-col">

@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import HomePage from "@/pages/HomePage";
 import CoursePage from "@/pages/CoursePage";
-import { useAuth } from "@/contexts/AuthContext";
 import { useEffect, useState } from "react";
 import { EntryFormModal } from "@/components/EntryFormModal";
 
@@ -19,13 +18,17 @@ function Router() {
 }
 
 function App() {
-  const { user, isAuthenticated } = useAuth();
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   
+  // Form is now always shown on the homepage, but not on other pages
   useEffect(() => {
-    // Show the form if the user is not authenticated
-    setShowForm(!isAuthenticated);
-  }, [isAuthenticated]);
+    const path = window.location.pathname;
+    if (path === '/') {
+      setShowForm(true);
+    } else {
+      setShowForm(false);
+    }
+  }, []);
 
   return (
     <>
