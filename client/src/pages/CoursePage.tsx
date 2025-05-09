@@ -134,15 +134,29 @@ export default function CoursePage() {
                   <h3 className="text-xl font-semibold mb-4">Module Resources:</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {module1Data.pdfResources.map((resource, index) => (
-                      <div key={index} className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
-                        <div className="bg-primary/10 p-2 rounded-lg mr-4">
+                      <a 
+                        key={index} 
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          // In a real app, this would trigger an actual download
+                          alert(`Downloading ${resource.filename}`);
+                        }}
+                        className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition duration-150 group"
+                      >
+                        <div className="bg-primary/10 p-2 rounded-lg mr-4 group-hover:bg-primary/20">
                           <Download className="h-6 w-6 text-primary" />
                         </div>
-                        <div>
+                        <div className="flex-1">
                           <h4 className="font-medium">{resource.title}</h4>
                           <p className="text-sm text-gray-500">{resource.size}</p>
                         </div>
-                      </div>
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 group-hover:bg-primary group-hover:text-white transition-colors">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                          </svg>
+                        </div>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -184,15 +198,29 @@ export default function CoursePage() {
                   <h3 className="text-xl font-semibold mb-4">Module Resources:</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {module2Data.pdfResources.map((resource, index) => (
-                      <div key={index} className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
-                        <div className="bg-primary/10 p-2 rounded-lg mr-4">
+                      <a 
+                        key={index} 
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          // In a real app, this would trigger an actual download
+                          alert(`Downloading ${resource.filename}`);
+                        }}
+                        className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition duration-150 group"
+                      >
+                        <div className="bg-primary/10 p-2 rounded-lg mr-4 group-hover:bg-primary/20">
                           <Download className="h-6 w-6 text-primary" />
                         </div>
-                        <div>
+                        <div className="flex-1">
                           <h4 className="font-medium">{resource.title}</h4>
                           <p className="text-sm text-gray-500">{resource.size}</p>
                         </div>
-                      </div>
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 group-hover:bg-primary group-hover:text-white transition-colors">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                          </svg>
+                        </div>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -234,15 +262,29 @@ export default function CoursePage() {
                   <h3 className="text-xl font-semibold mb-4">Module Resources:</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {module3Data.pdfResources.map((resource, index) => (
-                      <div key={index} className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
-                        <div className="bg-primary/10 p-2 rounded-lg mr-4">
+                      <a 
+                        key={index} 
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          // In a real app, this would trigger an actual download
+                          alert(`Downloading ${resource.filename}`);
+                        }}
+                        className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition duration-150 group"
+                      >
+                        <div className="bg-primary/10 p-2 rounded-lg mr-4 group-hover:bg-primary/20">
                           <Download className="h-6 w-6 text-primary" />
                         </div>
-                        <div>
+                        <div className="flex-1">
                           <h4 className="font-medium">{resource.title}</h4>
                           <p className="text-sm text-gray-500">{resource.size}</p>
                         </div>
-                      </div>
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 group-hover:bg-primary group-hover:text-white transition-colors">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                          </svg>
+                        </div>
+                      </a>
                     ))}
                   </div>
                 </div>
