@@ -25,7 +25,7 @@ export default function CoursePage() {
       
       <main className="flex-grow">
         {/* Hero section similar to screenshot */}
-        <div className="w-full bg-gradient-to-br from-primary-dark to-blue-800 text-white">
+        <div className="w-full bg-gradient-to-br from-blue-900 to-blue-800 text-white">
           <div className="container mx-auto px-4 py-16 md:py-24 text-center">
             <AIGenticBrosLogo className="h-12 w-auto mx-auto mb-8" />
             
