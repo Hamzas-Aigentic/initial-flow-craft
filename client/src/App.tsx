@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
@@ -21,16 +21,16 @@ function Router() {
 
 function App() {
   const [showForm, setShowForm] = useState(true);
+  const [location] = useLocation();
   
-  // Form is now always shown on the homepage, but not on other pages
+  // Listen for location changes to determine whether to show the form
   useEffect(() => {
-    const path = window.location.pathname;
-    if (path === '/') {
+    if (location === '/') {
       setShowForm(true);
     } else {
       setShowForm(false);
     }
-  }, []);
+  }, [location]);
 
   return (
     <>
