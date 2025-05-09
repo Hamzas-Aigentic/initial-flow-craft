@@ -24,7 +24,7 @@ export const module1Data = {
     { title: "Reflection Journal", filename: "LO1_Reflection_Journal.pdf", size: "15KB" }
   ],
   videoTitle: "Module 1 - AI Fundamentals & Tools",
-  videoEmbedId: "", // Will be populated with actual YouTube ID when available
+  videoEmbedId: "1QdzNnaKP4Y", // YouTube video ID for Module 1
   imageUrl: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500",
   sideContent: (
     <>
@@ -79,7 +79,7 @@ export const module2Data = {
     { title: "Reflection Journal", filename: "LO2_Reflection_Journal_Redesign.pdf", size: "25KB" }
   ],
   videoTitle: "Module 2 - Prompting & Hallucination Control",
-  videoEmbedId: "", // Will be populated with actual YouTube ID when available
+  videoEmbedId: "09FGt0RWYNY", // YouTube video ID for Module 2
   imageUrl: "https://pixabay.com/get/gb475c532cd6c12d20bb1e68211cf47404429d1819e5e477d20a7a08d7272c2814da62718d989e76c6bfc8e93a1778694c560243ab1706e08f883b598c6adbba5_1280.jpg",
   sideContent: (
     <>
@@ -135,7 +135,7 @@ export const module3Data = {
     { title: "Reflection Journal", filename: "LO3_Reflection_Journal.pdf", size: "25KB" }
   ],
   videoTitle: "Module 3 - Build Your First AI Flow",
-  videoEmbedId: "", // Will be populated with actual YouTube ID when available
+  videoEmbedId: "YQBW7-4Pf6w", // YouTube video ID for Module 3
   imageUrl: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500",
   sideContent: (
     <>
