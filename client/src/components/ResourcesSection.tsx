@@ -43,58 +43,108 @@ export function ResourcesSection() {
               Error loading resources. Please try again later.
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Module 1 Resources */}
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
-                <div className="bg-primary text-white p-4">
-                  <h3 className="font-bold text-lg">Module 1 Resources</h3>
+            <div className="flex flex-col items-center space-y-10">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+                {/* Module 1 Resources */}
+                <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+                  <div className="bg-blue-700 text-white p-4 text-center">
+                    <h3 className="font-bold text-lg">Module 1 Resources</h3>
+                  </div>
+                  <div className="space-y-0 divide-y divide-gray-100">
+                    {resources?.module1.map((resource, index) => (
+                      <div key={index} className="flex items-center p-4 hover:bg-gray-50">
+                        <div className="flex-1">
+                          <div className="flex items-center">
+                            <svg className="h-5 w-5 text-blue-700 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1-5a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8h-3a2 2 0 01-2-2V3H7z" clipRule="evenodd" />
+                            </svg>
+                            <span className="font-medium text-gray-800">{resource.title}</span>
+                          </div>
+                        </div>
+                        <a 
+                          href="#" 
+                          onClick={(e) => {
+                            e.preventDefault();
+                            // In a real app, this would download the file
+                            alert(`Downloading ${resource.filename}`);
+                          }}
+                          className="text-blue-600 hover:text-blue-800"
+                        >
+                          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="p-5 space-y-3">
-                  {resources?.module1.map((resource, index) => (
-                    <PdfCard
-                      key={index}
-                      title={resource.title}
-                      filename={resource.filename}
-                      fileSize={resource.size}
-                      compact
-                    />
-                  ))}
+                
+                {/* Module 2 Resources */}
+                <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+                  <div className="bg-blue-700 text-white p-4 text-center">
+                    <h3 className="font-bold text-lg">Module 2 Resources</h3>
+                  </div>
+                  <div className="space-y-0 divide-y divide-gray-100">
+                    {resources?.module2.map((resource, index) => (
+                      <div key={index} className="flex items-center p-4 hover:bg-gray-50">
+                        <div className="flex-1">
+                          <div className="flex items-center">
+                            <svg className="h-5 w-5 text-blue-700 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1-5a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8h-3a2 2 0 01-2-2V3H7z" clipRule="evenodd" />
+                            </svg>
+                            <span className="font-medium text-gray-800">{resource.title}</span>
+                          </div>
+                        </div>
+                        <a 
+                          href="#" 
+                          onClick={(e) => {
+                            e.preventDefault();
+                            // In a real app, this would download the file
+                            alert(`Downloading ${resource.filename}`);
+                          }}
+                          className="text-blue-600 hover:text-blue-800"
+                        >
+                          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              
-              {/* Module 2 Resources */}
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
-                <div className="bg-primary text-white p-4">
-                  <h3 className="font-bold text-lg">Module 2 Resources</h3>
-                </div>
-                <div className="p-5 space-y-3">
-                  {resources?.module2.map((resource, index) => (
-                    <PdfCard
-                      key={index}
-                      title={resource.title}
-                      filename={resource.filename}
-                      fileSize={resource.size}
-                      compact
-                    />
-                  ))}
-                </div>
-              </div>
-              
-              {/* Module 3 Resources */}
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
-                <div className="bg-primary text-white p-4">
-                  <h3 className="font-bold text-lg">Module 3 Resources</h3>
-                </div>
-                <div className="p-5 space-y-3">
-                  {resources?.module3.map((resource, index) => (
-                    <PdfCard
-                      key={index}
-                      title={resource.title}
-                      filename={resource.filename}
-                      fileSize={resource.size}
-                      compact
-                    />
-                  ))}
+                
+                {/* Module 3 Resources */}
+                <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+                  <div className="bg-blue-700 text-white p-4 text-center">
+                    <h3 className="font-bold text-lg">Module 3 Resources</h3>
+                  </div>
+                  <div className="space-y-0 divide-y divide-gray-100">
+                    {resources?.module3.map((resource, index) => (
+                      <div key={index} className="flex items-center p-4 hover:bg-gray-50">
+                        <div className="flex-1">
+                          <div className="flex items-center">
+                            <svg className="h-5 w-5 text-blue-700 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1-5a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8h-3a2 2 0 01-2-2V3H7z" clipRule="evenodd" />
+                            </svg>
+                            <span className="font-medium text-gray-800">{resource.title}</span>
+                          </div>
+                        </div>
+                        <a 
+                          href="#" 
+                          onClick={(e) => {
+                            e.preventDefault();
+                            // In a real app, this would download the file
+                            alert(`Downloading ${resource.filename}`);
+                          }}
+                          className="text-blue-600 hover:text-blue-800"
+                        >
+                          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
