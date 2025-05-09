@@ -65,8 +65,8 @@ export function EntryFormModal() {
           description: "You now have access to the course materials. Check your email for direct access link.",
         });
         
-        // Redirect to the course page
-        setLocation("/course");
+        // Redirect to the thank you page
+        setLocation("/thank-you");
       } else {
         toast({
           title: "Registration failed",

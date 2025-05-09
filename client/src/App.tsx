@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import HomePage from "@/pages/HomePage";
 import CoursePage from "@/pages/CoursePage";
+import ThankYouPage from "@/pages/ThankYouPage";
 import { useEffect, useState } from "react";
 import { EntryFormModal } from "@/components/EntryFormModal";
 
@@ -12,6 +13,7 @@ function Router() {
     <Switch>
       <Route path="/" component={HomePage} />
       <Route path="/course" component={CoursePage} />
+      <Route path="/thank-you" component={ThankYouPage} />
       <Route component={NotFound} />
     </Switch>
   );
