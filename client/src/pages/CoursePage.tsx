@@ -5,18 +5,35 @@ import { ResourcesSection } from "@/components/ResourcesSection";
 import { module1Data, module2Data, module3Data } from "@/lib/courseData";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import { ArrowRight, ChevronRight, Download } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowRight, ChevronRight, Download, Award } from "lucide-react";
 import { AIGenticBrosLogo } from "@/components/ui/logo";
 import { VideoPlayer } from "@/components/ui/video-player";
+import { ModuleProgressIndicator } from "@/components/ModuleProgressIndicator";
+import { CourseProgressBar } from "@/components/CourseProgressBar";
+import { useProgress } from "@/contexts/ProgressContext";
 
 export default function CoursePage() {
   const [activeTab, setActiveTab] = useState("module1");
+  const { updateModuleProgress, markVideoWatched, markResourceDownloaded, getModuleProgress } = useProgress();
+
+  // Log module access when tab changes
+  useEffect(() => {
+    updateModuleProgress(activeTab, { lastAccessedAt: new Date() });
+  }, [activeTab, updateModuleProgress]);
 
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     // Scroll to top of the content area
     window.scrollTo({ top: 500, behavior: 'smooth' });
+  };
+  
+  const handleVideoPlay = (moduleId: string) => {
+    markVideoWatched(moduleId);
+  };
+  
+  const handleResourceDownload = (moduleId: string, resourceId: string) => {
+    markResourceDownloaded(moduleId, resourceId);
   };
 
   return (
