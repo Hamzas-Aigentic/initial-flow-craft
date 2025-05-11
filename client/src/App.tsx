@@ -7,6 +7,7 @@ import CoursePage from "@/pages/CoursePage";
 import ThankYouPage from "@/pages/ThankYouPage";
 import { useEffect, useState } from "react";
 import { EntryFormModal } from "@/components/EntryFormModal";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 function Router() {
   return (
@@ -35,13 +36,15 @@ function App() {
   return (
     <>
       <TooltipProvider>
-        <Toaster />
-        
-        {/* Entry form modal that collects user data */}
-        {showForm && <EntryFormModal />}
-        
-        {/* Main application routes */}
-        <Router />
+        <AuthProvider>
+          <Toaster />
+          
+          {/* Entry form modal that collects user data */}
+          {showForm && <EntryFormModal />}
+          
+          {/* Main application routes */}
+          <Router />
+        </AuthProvider>
       </TooltipProvider>
     </>
   );
