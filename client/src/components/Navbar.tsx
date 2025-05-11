@@ -38,7 +38,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         <div className="flex items-center">
-          <AIGenticBrosLogo className="h-12 w-auto" />
+          <span className="text-xl font-bold">AIGentic Bros</span>
         </div>
         
         <div className="hidden md:flex space-x-6">

@@ -17,7 +17,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center md:items-start mb-10">
             <div className="mb-6 md:mb-0 text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start mb-4">
-                <AIGenticBrosLogo className="h-16 w-auto" />
+                <span className="text-2xl font-bold">AIGentic Bros</span>
               </div>
               <p className="text-white/80 max-w-xs">
                 Teaching AI-Driven Business Growth to entrepreneurs who want to build profitable AI-powered businesses.
