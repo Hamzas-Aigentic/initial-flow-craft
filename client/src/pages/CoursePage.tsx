@@ -40,7 +40,7 @@ export default function CoursePage() {
             <div className="flex flex-wrap justify-center gap-4 mb-16">
               <Button 
                 size="lg" 
-                className="bg-white text-primary-dark hover:bg-gray-100"
+                className="bg-blue-500 text-white hover:bg-blue-600 font-medium transition-colors"
                 onClick={() => document.getElementById('course-tabs')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Explore Course Modules <ArrowRight className="ml-2 h-5 w-5" />
