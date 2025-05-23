@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Clock, Users, TrendingUp, Zap, Target, ArrowRight, Play } from "lucide-react";
 import { Footer } from "@/components/Footer";
 import { SignUpForm } from "@/components/SignUpForm";
+import { AIGenticBrosLogo } from "@/components/ui/logo";
 
 export default function HomePage() {
   const scrollToSignUp = () => {
@@ -14,10 +15,13 @@ export default function HomePage() {
       <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <span className="text-2xl font-bold text-gray-900">AIGentic Bros</span>
+            <div className="flex items-center">
+              <AIGenticBrosLogo className="h-10 w-auto mr-3" />
+              <span className="text-xl font-bold text-gray-900">AIGentic Bros</span>
+            </div>
             <Button 
               onClick={scrollToSignUp}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 text-lg"
             >
               Get Free Access
             </Button>
@@ -30,7 +34,7 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto text-center">
             <div className="mb-6">
-              <span className="bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold">
+              <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">
                 🔥 LIMITED TIME: FREE MINI-COURSE
               </span>
             </div>
@@ -65,7 +69,7 @@ export default function HomePage() {
             <Button 
               size="lg" 
               onClick={scrollToSignUp}
-              className="bg-orange-500 hover:bg-orange-600 text-white text-xl px-12 py-6 rounded-full font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              className="bg-blue-600 hover:bg-blue-700 text-white text-2xl px-16 py-8 rounded-full font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
             >
               Get Instant Access - 100% FREE
             </Button>
@@ -114,7 +118,7 @@ export default function HomePage() {
       </section>
 
       {/* Sign Up Section */}
-      <section id="signup-section" className="py-20 bg-gradient-to-br from-orange-500 to-red-500">
+      <section id="signup-section" className="py-20 bg-gradient-to-br from-blue-600 to-blue-700">
         <div className="container mx-auto px-6">
           <div className="max-w-lg mx-auto">
             <div className="bg-white rounded-2xl p-10 shadow-2xl">
@@ -123,7 +127,7 @@ export default function HomePage() {
                   Get Your Free AI Course Now
                 </h2>
                 <p className="text-xl text-gray-600">
-                  Join 10,000+ entrepreneurs already building AI-powered businesses
+                  Join entrepreneurs already building AI-powered businesses
                 </p>
               </div>
               
@@ -187,52 +191,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Social Proof & Results */}
-      <section className="py-20 bg-gray-100">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              Join 10,000+ Entrepreneurs Already Winning with AI
-            </h2>
-            <p className="text-xl text-gray-600 mb-12">
-              Don't take our word for it—see what our community is achieving:
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <div className="bg-white p-8 rounded-xl shadow-lg">
-                <div className="text-4xl font-bold text-blue-600 mb-2">15 hrs/week</div>
-                <div className="text-gray-600">Time saved on content creation</div>
-              </div>
-              <div className="bg-white p-8 rounded-xl shadow-lg">
-                <div className="text-4xl font-bold text-green-600 mb-2">300%</div>
-                <div className="text-gray-600">Increase in productivity</div>
-              </div>
-              <div className="bg-white p-8 rounded-xl shadow-lg">
-                <div className="text-4xl font-bold text-purple-600 mb-2">$50K+</div>
-                <div className="text-gray-600">Revenue generated using AI systems</div>
-              </div>
-            </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg text-left max-w-2xl mx-auto">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-blue-600 font-bold">SJ</span>
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900">Sarah Johnson</div>
-                  <div className="text-gray-600 text-sm">Marketing Agency Owner</div>
-                </div>
-              </div>
-              <p className="text-gray-700 italic">
-                "This course completely transformed how I approach content creation. What used to take me 8 hours now takes 30 minutes. My clients are getting better results, and I'm making more profit than ever."
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Urgency & Scarcity */}
-      <section className="py-20 bg-gradient-to-br from-red-600 to-orange-600">
+      <section className="py-20 bg-gradient-to-br from-blue-700 to-blue-800">
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-4xl mx-auto text-white">
             <h2 className="text-4xl md:text-5xl font-bold mb-8">
@@ -254,7 +216,7 @@ export default function HomePage() {
             <Button 
               size="lg" 
               onClick={scrollToSignUp}
-              className="bg-white text-red-600 hover:bg-gray-100 text-2xl px-12 py-6 rounded-full font-bold shadow-2xl transform hover:scale-105 transition-all duration-300"
+              className="bg-white text-blue-700 hover:bg-gray-100 text-2xl px-16 py-8 rounded-full font-bold shadow-2xl transform hover:scale-105 transition-all duration-300"
             >
               Start My AI Journey Now - FREE
             </Button>

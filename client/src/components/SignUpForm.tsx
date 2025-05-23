@@ -100,12 +100,12 @@ export function SignUpForm() {
       
       <Button
         type="submit"
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-medium"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
         disabled={mutation.isPending}
       >
         {mutation.isPending ? (
           <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
             Sending...
           </>
         ) : (
