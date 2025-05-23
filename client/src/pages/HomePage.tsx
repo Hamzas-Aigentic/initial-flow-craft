@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { SignUpForm } from "@/components/SignUpForm";
 
 export default function HomePage() {
-
   const scrollToSignUp = () => {
     document.getElementById('signup-section')?.scrollIntoView({ behavior: 'smooth' });
   };

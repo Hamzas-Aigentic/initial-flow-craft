@@ -21,26 +21,11 @@ function Router() {
 }
 
 function App() {
-  const [showForm, setShowForm] = useState(true);
-  const [location] = useLocation();
-  
-  // Listen for location changes to determine whether to show the form
-  useEffect(() => {
-    if (location === '/') {
-      setShowForm(true);
-    } else {
-      setShowForm(false);
-    }
-  }, [location]);
-
   return (
     <>
       <TooltipProvider>
         <AuthProvider>
           <Toaster />
-          
-          {/* Entry form modal that collects user data */}
-          {showForm && <EntryFormModal />}
           
           {/* Main application routes */}
           <Router />
