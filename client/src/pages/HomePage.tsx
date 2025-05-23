@@ -69,7 +69,7 @@ export default function HomePage() {
             <Button 
               size="lg" 
               onClick={scrollToSignUp}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-2xl px-16 py-8 rounded-full font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              className="bg-blue-600 hover:bg-blue-700 text-white text-lg md:text-2xl px-8 md:px-16 py-6 md:py-8 rounded-full font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 w-full max-w-md mx-auto"
             >
               Get Instant Access - 100% FREE
             </Button>
@@ -215,7 +215,7 @@ export default function HomePage() {
             <Button 
               size="lg" 
               onClick={scrollToSignUp}
-              className="bg-white text-blue-700 hover:bg-gray-100 text-2xl px-16 py-8 rounded-full font-bold shadow-2xl transform hover:scale-105 transition-all duration-300"
+              className="bg-white text-blue-700 hover:bg-gray-100 text-lg md:text-2xl px-8 md:px-16 py-6 md:py-8 rounded-full font-bold shadow-2xl transform hover:scale-105 transition-all duration-300 w-full max-w-md mx-auto"
             >
               Start My AI Journey Now - FREE
             </Button>
