@@ -1,16 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Clock, Users, TrendingUp, Zap, Target } from "lucide-react";
+import { CheckCircle, Clock, Users, TrendingUp, Zap, Target, ArrowRight, Play } from "lucide-react";
 import { Footer } from "@/components/Footer";
-import { useAuth } from "@/contexts/AuthContext";
 import { SignUpForm } from "@/components/SignUpForm";
 
 export default function HomePage() {
-  const { isAuthenticated } = useAuth();
-
-  if (!isAuthenticated) {
-    // Return empty div as the modal will be shown from App.tsx
-    return <div />;
-  }
 
   const scrollToSignUp = () => {
     document.getElementById('signup-section')?.scrollIntoView({ behavior: 'smooth' });
@@ -22,78 +15,99 @@ export default function HomePage() {
       <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <span className="text-2xl font-bold text-primary-dark">AIGentic Bros</span>
+            <span className="text-2xl font-bold text-gray-900">AIGentic Bros</span>
             <Button 
               onClick={scrollToSignUp}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6"
             >
-              Get Started Free
+              Get Free Access
             </Button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <section className="pt-32 pb-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Build Your First 
-              <span className="text-blue-600"> End-to-End AI System</span> 
-              in Just 2 Hours
+          <div className="max-w-5xl mx-auto text-center">
+            <div className="mb-6">
+              <span className="bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold">
+                🔥 LIMITED TIME: FREE MINI-COURSE
+              </span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 mb-8 leading-tight">
+              From Zero to 
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> AI Expert</span> 
+              in 2 Hours
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              No coding experience needed. Learn to create AI-powered automation systems that can transform your business operations and drive real growth.
+            
+            <p className="text-2xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed font-medium">
+              Stop watching AI pass you by. Build your first profitable AI automation system today—no coding, no confusion, just results.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-6 mb-10">
-              <div className="flex items-center text-gray-700">
-                <Clock className="w-5 h-5 mr-2 text-blue-600" />
-                <span>2-Hour Complete Course</span>
-              </div>
-              <div className="flex items-center text-gray-700">
-                <Users className="w-5 h-5 mr-2 text-blue-600" />
-                <span>Beginner-Friendly</span>
-              </div>
-              <div className="flex items-center text-gray-700">
-                <Zap className="w-5 h-5 mr-2 text-blue-600" />
-                <span>No Code Required</span>
+            <div className="bg-white rounded-2xl p-8 shadow-2xl max-w-4xl mx-auto mb-12">
+              <div className="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                  <div className="text-4xl font-bold text-blue-600 mb-2">2 Hours</div>
+                  <div className="text-gray-600">Complete Training</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-blue-600 mb-2">$0</div>
+                  <div className="text-gray-600">Investment Required</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-blue-600 mb-2">∞</div>
+                  <div className="text-gray-600">Lifetime Access</div>
+                </div>
               </div>
             </div>
 
             <Button 
               size="lg" 
               onClick={scrollToSignUp}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-4 mb-12"
+              className="bg-orange-500 hover:bg-orange-600 text-white text-xl px-12 py-6 rounded-full font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
             >
-              Start Learning Now - Free Access
+              Get Instant Access - 100% FREE
             </Button>
+            
+            <p className="text-gray-500 mt-4">⚡ Instant delivery • No spam • Cancel anytime</p>
+          </div>
+        </div>
+      </section>
 
-            {/* Course Preview */}
-            <div className="bg-white rounded-xl shadow-xl p-8 max-w-3xl mx-auto">
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">What You'll Build:</h3>
-              <div className="text-left space-y-4">
-                <div className="flex items-start">
-                  <Target className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">AI-Powered Caption Generator</h4>
-                    <p className="text-gray-600">Transform blank ideas into engaging social media content automatically</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <TrendingUp className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Complete Automation Workflow</h4>
-                    <p className="text-gray-600">End-to-end system that works 24/7 without your intervention</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Zap className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Real Business Application</h4>
-                    <p className="text-gray-600">Ready to implement in your business immediately</p>
-                  </div>
-                </div>
+      {/* Problem/Pain Section */}
+      <section className="py-20 bg-red-50">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
+              You're Missing Out on the AI Revolution
+            </h2>
+            <p className="text-xl text-gray-700 mb-12 leading-relaxed">
+              While others automate and scale their businesses with AI, you're still stuck doing everything manually...
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8 text-left">
+              <div className="bg-white p-8 rounded-xl shadow-lg">
+                <h3 className="text-2xl font-bold text-red-600 mb-4">❌ Without AI Skills:</h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li>• Spending hours on repetitive tasks</li>
+                  <li>• Watching competitors pull ahead</li>
+                  <li>• Missing profitable opportunities</li>
+                  <li>• Feeling overwhelmed by AI complexity</li>
+                  <li>• Stuck in the "old way" of doing business</li>
+                </ul>
+              </div>
+              
+              <div className="bg-white p-8 rounded-xl shadow-lg">
+                <h3 className="text-2xl font-bold text-green-600 mb-4">✅ With AI Mastery:</h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li>• Automate time-consuming workflows</li>
+                  <li>• Generate content in seconds, not hours</li>
+                  <li>• Scale your business effortlessly</li>
+                  <li>• Stay ahead of the competition</li>
+                  <li>• Build systems that work 24/7</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -101,209 +115,150 @@ export default function HomePage() {
       </section>
 
       {/* Sign Up Section */}
-      <section id="signup-section" className="py-16 bg-white">
+      <section id="signup-section" className="py-20 bg-gradient-to-br from-orange-500 to-red-500">
         <div className="container mx-auto px-6">
-          <div className="max-w-md mx-auto bg-gray-50 rounded-xl p-8 shadow-lg">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-2">
-              Get Instant Access
+          <div className="max-w-lg mx-auto">
+            <div className="bg-white rounded-2xl p-10 shadow-2xl">
+              <div className="text-center mb-8">
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                  Get Your Free AI Course Now
+                </h2>
+                <p className="text-xl text-gray-600">
+                  Join 10,000+ entrepreneurs already building AI-powered businesses
+                </p>
+              </div>
+              
+              <SignUpForm />
+              
+              <div className="text-center mt-8 space-y-3">
+                <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
+                  <span>✓ Instant Access</span>
+                  <span>✓ No Credit Card</span>
+                  <span>✓ 100% Free</span>
+                </div>
+                <p className="text-sm text-gray-400">
+                  We respect your privacy. Unsubscribe anytime.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What You'll Learn Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">
+              Here's Exactly What You'll Master
             </h2>
-            <p className="text-center text-gray-600 mb-8">
-              Join thousands learning AI automation. Course materials sent instantly to your email.
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-3xl font-bold text-white">1</span>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-gray-900">AI Fundamentals That Actually Matter</h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Skip the technical jargon. Learn only what you need to start building profitable AI systems for your business.
+                </p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-3xl font-bold text-white">2</span>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-gray-900">Prompting Like a Pro</h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Master the secret techniques that get you 10x better results from AI tools—transforming mediocre output into marketing gold.
+                </p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-3xl font-bold text-white">3</span>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-gray-900">Build Your First AI System</h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Follow along as we build a complete AI-powered caption generator that turns ideas into engaging content automatically.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof & Results */}
+      <section className="py-20 bg-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-gray-900 mb-8">
+              Join 10,000+ Entrepreneurs Already Winning with AI
+            </h2>
+            <p className="text-xl text-gray-600 mb-12">
+              Don't take our word for it—see what our community is achieving:
             </p>
             
-            <SignUpForm />
-            
-            <div className="text-center mt-6">
-              <p className="text-sm text-gray-500">
-                Free course • No credit card required • Access sent instantly
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <div className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="text-4xl font-bold text-blue-600 mb-2">15 hrs/week</div>
+                <div className="text-gray-600">Time saved on content creation</div>
+              </div>
+              <div className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="text-4xl font-bold text-green-600 mb-2">300%</div>
+                <div className="text-gray-600">Increase in productivity</div>
+              </div>
+              <div className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="text-4xl font-bold text-purple-600 mb-2">$50K+</div>
+                <div className="text-gray-600">Revenue generated using AI systems</div>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-lg text-left max-w-2xl mx-auto">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                  <span className="text-blue-600 font-bold">SJ</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900">Sarah Johnson</div>
+                  <div className="text-gray-600 text-sm">Marketing Agency Owner</div>
+                </div>
+              </div>
+              <p className="text-gray-700 italic">
+                "This course completely transformed how I approach content creation. What used to take me 8 hours now takes 30 minutes. My clients are getting better results, and I'm making more profit than ever."
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Course Modules Overview */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-              Complete Learning Path
-            </h2>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl font-bold text-blue-600">1</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">AI Fundamentals</h3>
-                <p className="text-gray-600 mb-4">
-                  Master the basics of AI, understand key concepts, and learn how AI can transform business operations.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Understanding AI & Machine Learning
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Business Applications of AI
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Getting Started with AI Tools
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl font-bold text-blue-600">2</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">AI Prompting Mastery</h3>
-                <p className="text-gray-600 mb-4">
-                  Learn advanced prompting techniques to get exceptional results from AI systems consistently.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Prompt Engineering Fundamentals
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Advanced Prompting Strategies
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Optimizing AI Responses
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl font-bold text-blue-600">3</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">AI Flow Building</h3>
-                <p className="text-gray-600 mb-4">
-                  Build your complete AI automation system from scratch using no-code tools and workflows.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Creating Automated Workflows
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Integrating Multiple AI Tools
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Deploying Your AI System
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12">
-              Why This Course Changes Everything
-            </h2>
-            
-            <div className="grid md:grid-cols-2 gap-8 text-left">
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <CheckCircle className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">No Technical Background Required</h3>
-                    <p className="text-gray-600">Designed for entrepreneurs and business owners who want results, not complexity.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <CheckCircle className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Immediate Implementation</h3>
-                    <p className="text-gray-600">Build and deploy your AI system during the course - no waiting, no delays.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <CheckCircle className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Real Business Value</h3>
-                    <p className="text-gray-600">Create systems that save hours weekly and generate consistent content.</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <CheckCircle className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Complete Resource Library</h3>
-                    <p className="text-gray-600">Cheat sheets, templates, and guides you can reference forever.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <CheckCircle className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Future-Proof Skills</h3>
-                    <p className="text-gray-600">Learn principles that apply to any AI tool or platform that emerges.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <CheckCircle className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Lifetime Access</h3>
-                    <p className="text-gray-600">Access course materials and updates forever - no expiration dates.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-16 bg-blue-600">
+      {/* Urgency & Scarcity */}
+      <section className="py-20 bg-gradient-to-br from-red-600 to-orange-600">
         <div className="container mx-auto px-6 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Ready to Build Your AI-Powered Future?
+          <div className="max-w-4xl mx-auto text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8">
+              The AI Train Is Leaving the Station
             </h2>
-            <p className="text-xl text-blue-100 mb-8">
-              Join thousands of entrepreneurs who've already transformed their businesses with AI automation.
+            <p className="text-2xl mb-8 leading-relaxed">
+              Every day you wait is another day your competitors get further ahead. 
+              The businesses winning tomorrow are learning AI today.
             </p>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-12">
+              <h3 className="text-3xl font-bold mb-4">⚠️ Don't Get Left Behind</h3>
+              <p className="text-xl">
+                By 2024, 75% of businesses will be using AI automation. 
+                Will you be leading the pack or playing catch-up?
+              </p>
+            </div>
+            
             <Button 
               size="lg" 
               onClick={scrollToSignUp}
-              className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4"
+              className="bg-white text-red-600 hover:bg-gray-100 text-2xl px-12 py-6 rounded-full font-bold shadow-2xl transform hover:scale-105 transition-all duration-300"
             >
-              Get Free Access Now
+              Start My AI Journey Now - FREE
             </Button>
-            <p className="text-blue-200 text-sm mt-4">
-              No spam, no sales calls. Just valuable AI education delivered to your inbox.
-            </p>
           </div>
         </div>
       </section>
