@@ -80,7 +80,7 @@ export default function HomePage() {
       </section>
 
       {/* Problem/Pain Section */}
-      <section className="py-20 bg-red-50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
@@ -208,8 +208,7 @@ export default function HomePage() {
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-12">
               <h3 className="text-3xl font-bold mb-4">⚠️ Don't Get Left Behind</h3>
               <p className="text-xl">
-                By 2024, 75% of businesses will be using AI automation. 
-                Will you be leading the pack or playing catch-up?
+                72% of companies already deploy AI—why aren't you? (McKinsey stat.)
               </p>
             </div>
             
