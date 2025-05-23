@@ -41,7 +41,7 @@ export default function HomePage() {
             
             <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 mb-8 leading-tight">
               From Zero to 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> AI Expert</span> 
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> AI Expert </span>
               in 2 Hours
             </h1>
             
