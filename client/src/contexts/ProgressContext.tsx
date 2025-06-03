@@ -55,10 +55,10 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
 
   // Update a module's progress
   const updateModuleProgress = (moduleId: string, data: Partial<ModuleProgress>) => {
-    setProgress((prev: UserProgress | null) => {
-      if (!prev) return prev;
+    setProgress((prev: UserProgress) => {
+      const currentProgress = prev || initialProgress;
 
-      const moduleProgress = prev.modules[moduleId] || {
+      const moduleProgress = currentProgress.modules[moduleId] || {
         moduleId,
         completed: false,
         lastAccessedAt: new Date(),
@@ -79,7 +79,7 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
         updatedModuleProgress.quizCompleted;
 
       const updatedModules = {
-        ...prev.modules,
+        ...currentProgress.modules,
         [moduleId]: {
           ...updatedModuleProgress,
           completed: isModuleCompleted
@@ -87,7 +87,7 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
       };
 
       return {
-        ...prev,
+        ...currentProgress,
         modules: updatedModules,
         overallProgress: calculateOverallProgress(updatedModules),
         lastUpdatedAt: new Date()
@@ -107,10 +107,10 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
 
   // Mark a resource as downloaded
   const markResourceDownloaded = (moduleId: string, resourceId: string) => {
-    setProgress((prev: UserProgress | null) => {
-      if (!prev) return prev;
+    setProgress((prev: UserProgress) => {
+      const currentProgress = prev || initialProgress;
 
-      const moduleProgress = prev.modules[moduleId] || {
+      const moduleProgress = currentProgress.modules[moduleId] || {
         moduleId,
         completed: false,
         lastAccessedAt: new Date(),
@@ -125,9 +125,9 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
         : [...moduleProgress.resourcesDownloaded, resourceId];
 
       return {
-        ...prev,
+        ...currentProgress,
         modules: {
-          ...prev.modules,
+          ...currentProgress.modules,
           [moduleId]: {
             ...moduleProgress,
             resourcesDownloaded,
