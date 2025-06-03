@@ -108,15 +108,18 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
     updateModuleProgress(moduleId, { videoWatched: true });
   };
 
-  // Mark a resource as downloaded
-  const markResourceDownloaded = (moduleId: string, resourceId: string) => {
-    setProgress((prev: UserProgress | null) => {
-     if (!prev) return prev;            // <- handle initial null
-     return {
-       ...prev,
-       /* your mutations here */
-     };
-   });
+ // Mark a resource as downloaded
+const markResourceDownloaded = (moduleId: string, resourceId: string) => {
+  setProgress((prev: UserProgress | null) => {
+    if (!prev) return prev;
+
+    return {
+      ...prev,
+      // add or update whatever fields you need here
+      // e.g. modules, resourcesDownloaded, etc.
+    };
+  });
+};  
       const moduleProgress = prev.modules[moduleId] || {
         moduleId,
         completed: false,
