@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Clock, Users, TrendingUp, Zap, Target, ArrowRight, Play } from "lucide-react";
 import { Footer } from "@/components/Footer";
 import { SignUpForm } from "@/components/SignUpForm";
-import { AIGenticBrosLogo } from "@/components/ui/logo";
+import { AIGenticBrosLogo } from "@/components/ui/AIGenticBrosLogo";
 
 export default function HomePage() {
   const scrollToSignUp = () => {

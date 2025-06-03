@@ -20,7 +20,7 @@ export function SignUpForm() {
 
   const mutation = useMutation({
     mutationFn: async (data: FormData) => {
-      const response = await fetch("/api/submit-form", {
+      const response = await fetch("/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
