@@ -54,7 +54,13 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
 
   // Update a module's progress
   const updateModuleProgress = (moduleId: string, data: Partial<ModuleProgress>) => {
-    setProgress((prev) => {
+    setProgress((prev: UserProgress | null) => {
+     if (!prev) return prev;            // <- handle initial null
+     return {
+       ...prev,
+       /* your mutations here */
+     };
+   });
       const moduleProgress = prev.modules[moduleId] || {
         moduleId,
         completed: false,
@@ -104,7 +110,13 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
 
   // Mark a resource as downloaded
   const markResourceDownloaded = (moduleId: string, resourceId: string) => {
-    setProgress((prev) => {
+    setProgress((prev: UserProgress | null) => {
+     if (!prev) return prev;            // <- handle initial null
+     return {
+       ...prev,
+       /* your mutations here */
+     };
+   });
       const moduleProgress = prev.modules[moduleId] || {
         moduleId,
         completed: false,
