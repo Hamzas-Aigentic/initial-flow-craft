@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { ModuleProgress, UserProgress } from "@shared/schema";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
@@ -55,12 +56,8 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
   // Update a module's progress
   const updateModuleProgress = (moduleId: string, data: Partial<ModuleProgress>) => {
     setProgress((prev: UserProgress | null) => {
-     if (!prev) return prev;            // <- handle initial null
-     return {
-       ...prev,
-       /* your mutations here */
-     };
-   });
+      if (!prev) return prev;
+
       const moduleProgress = prev.modules[moduleId] || {
         moduleId,
         completed: false,
@@ -108,18 +105,11 @@ export function ProgressProvider({ children }: ProgressProviderProps) {
     updateModuleProgress(moduleId, { videoWatched: true });
   };
 
- // Mark a resource as downloaded
-const markResourceDownloaded = (moduleId: string, resourceId: string) => {
-  setProgress((prev: UserProgress | null) => {
-    if (!prev) return prev;
+  // Mark a resource as downloaded
+  const markResourceDownloaded = (moduleId: string, resourceId: string) => {
+    setProgress((prev: UserProgress | null) => {
+      if (!prev) return prev;
 
-    return {
-      ...prev,
-      // add or update whatever fields you need here
-      // e.g. modules, resourcesDownloaded, etc.
-    };
-  });
-};  
       const moduleProgress = prev.modules[moduleId] || {
         moduleId,
         completed: false,
