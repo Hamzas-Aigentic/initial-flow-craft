@@ -9,6 +9,8 @@ import HomePage from "@/pages/HomePage";
 import CoursePage from "@/pages/CoursePage";
 import ThankYouPage from "@/pages/ThankYouPage";
 
+console.log("App component loading...");
+
 function Router() {
   return (
     <Switch>
@@ -22,6 +24,8 @@ function Router() {
 }
 
 function App() {
+  console.log("App component rendering...");
+  
   return (
     <ErrorBoundary>
       <TooltipProvider>

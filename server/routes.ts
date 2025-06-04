@@ -1,19 +1,24 @@
+
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertUserSchema } from "@shared/schema";
-import { ZodError } from "zod";
-import { fromZodError } from "zod-validation-error";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoint to register a new user for the course
   app.post("/api/register", async (req, res) => {
     try {
-      // Validate the request body
-      const userData = insertUserSchema.parse(req.body);
+      const { fullName, email } = req.body;
+      
+      // Basic validation
+      if (!fullName || !email) {
+        return res.status(400).json({ 
+          success: false, 
+          message: "Full name and email are required" 
+        });
+      }
       
       // Check if the user already exists
-      const existingUser = await storage.getUserByEmail(userData.email);
+      const existingUser = await storage.getUserByEmail(email);
       
       if (existingUser) {
         // If the user already exists, return success but don't create a duplicate
@@ -21,7 +26,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       // Create a new user
-      const newUser = await storage.createUser(userData);
+      const newUser = await storage.createUser({ fullName, email });
       
       return res.json({ 
         success: true, 
@@ -29,14 +34,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         message: "Registration successful"
       });
     } catch (error) {
-      if (error instanceof ZodError) {
-        const validationError = fromZodError(error);
-        return res.status(400).json({ 
-          success: false, 
-          message: validationError.message 
-        });
-      }
-      
+      console.error("Registration error:", error);
       return res.status(500).json({ 
         success: false, 
         message: "Failed to register. Please try again."
