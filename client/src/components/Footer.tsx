@@ -1,4 +1,5 @@
-import { AIGenticBrosLogo } from "./ui/logo";
+
+import { AIGenticBrosLogo } from "./ui/AIGenticBrosLogo";
 import { Link } from "wouter";
 import { Twitter, Linkedin, Youtube, MessageCircle } from "lucide-react";
 
