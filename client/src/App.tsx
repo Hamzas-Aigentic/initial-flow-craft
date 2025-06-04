@@ -1,4 +1,6 @@
 
+console.log("=== APP.TSX LOADING ===");
+
 import { Switch, Route } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,9 +11,10 @@ import HomePage from "@/pages/HomePage";
 import CoursePage from "@/pages/CoursePage";
 import ThankYouPage from "@/pages/ThankYouPage";
 
-console.log("App component loading...");
+console.log("All App imports loaded successfully");
 
 function Router() {
+  console.log("Router component rendering...");
   return (
     <Switch>
       <Route path="/test" component={() => <BuildTest />} />
@@ -24,16 +27,23 @@ function Router() {
 }
 
 function App() {
-  console.log("App component rendering...");
+  console.log("=== APP COMPONENT RENDERING ===");
   
-  return (
-    <ErrorBoundary>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </ErrorBoundary>
-  );
+  try {
+    return (
+      <ErrorBoundary>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </ErrorBoundary>
+    );
+  } catch (error) {
+    console.error("Error in App component:", error);
+    throw error;
+  }
 }
+
+console.log("App component defined successfully");
 
 export default App;

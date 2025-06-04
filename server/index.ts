@@ -3,9 +3,13 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
+console.log("=== SERVER STARTING ===");
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+console.log("Express middleware configured");
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -38,32 +42,46 @@ app.use((req, res, next) => {
 });
 
 (async () => {
-  const server = await registerRoutes(app);
+  try {
+    console.log("Registering routes...");
+    const server = await registerRoutes(app);
+    console.log("Routes registered successfully");
 
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
+    app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+      const status = err.status || err.statusCode || 500;
+      const message = err.message || "Internal Server Error";
 
-    res.status(status).json({ message });
-    console.error("Server error:", err);
-  });
+      res.status(status).json({ message });
+      console.error("Server error:", err);
+    });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
+    console.log("Environment:", app.get("env"));
+    
+    // importantly only setup vite in development and after
+    // setting up all the other routes so the catch-all route
+    // doesn't interfere with the other routes
+    if (app.get("env") === "development") {
+      console.log("Setting up Vite for development...");
+      await setupVite(app, server);
+      console.log("Vite setup completed");
+    } else {
+      console.log("Setting up static serving for production...");
+      serveStatic(app);
+    }
+
+    // Use port 8080 to match Vite configuration
+    const port = 8080;
+    server.listen({
+      port,
+      host: "0.0.0.0",
+      reusePort: true,
+    }, () => {
+      console.log("=== SERVER STARTED SUCCESSFULLY ===");
+      log(`serving on port ${port}`);
+    });
+  } catch (error) {
+    console.error("=== SERVER STARTUP FAILED ===");
+    console.error("Error during server startup:", error);
+    process.exit(1);
   }
-
-  // Use port 8080 to match Vite configuration
-  const port = 8080;
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
-  });
 })();
